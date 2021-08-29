@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imageViewFork"
+        android:layout_width="@dimen/size_icon"
+        android:layout_height="@dimen/size_icon"
+        android:src="@drawable/ic_fork_foreground"
+        />
+
+    <TextView
+        android:id="@+id/textViewForkCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/count_size"
+        tools:text="Count"/>
+
+    <ImageView
+        android:id="@+id/imageViewStar"
+        android:layout_width="@dimen/size_icon"
+        android:layout_height="@dimen/size_icon"
+        android:src="@drawable/ic_star"
+        />
+
+    <TextView
+        android:id="@+id/textViewStarCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/count_size"
+        tools:text="Count"/>
+
+
+</LinearLayout>
