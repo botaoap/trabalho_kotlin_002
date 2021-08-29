@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="count_size">20sp</dimen>
+    <dimen name="size_icon">24dp</dimen>
+</resources>
