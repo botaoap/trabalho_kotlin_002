@@ -2,7 +2,7 @@ package com.serasa.consume_api_github_repositories
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.serasa.consume_api_github_repositories.ui.main.MainFragment
+import com.serasa.consume_api_github_repositories.view.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

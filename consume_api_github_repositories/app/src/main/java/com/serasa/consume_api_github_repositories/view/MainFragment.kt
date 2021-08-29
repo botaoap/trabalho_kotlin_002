@@ -1,4 +1,4 @@
-package com.serasa.consume_api_github_repositories.ui.main
+package com.serasa.consume_api_github_repositories.view
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.serasa.consume_api_github_repositories.R
+import com.serasa.consume_api_github_repositories.view_model.MainViewModel
 
 class MainFragment : Fragment() {
 
