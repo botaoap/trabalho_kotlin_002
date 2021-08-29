@@ -1,6 +1,7 @@
 package com.serasa.consume_api_github_repositories.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class RepositoryGitHub(
     @SerializedName("items")
@@ -16,15 +17,15 @@ data class ItemsGitHub(
     val page: String,
     @SerializedName("description")
     val description: String,
-    @SerializedName("pulls_url")
-    val pullRequest: PullRequest,
+//    @SerializedName("pulls_url")
+//    val pullRequest: PullRequest,
     @SerializedName("stargazers_count")
     val startCount: Int,
     @SerializedName("forks_count")
     val forkCount: Int,
     @SerializedName("language")
     val language: String
-)
+) : Serializable
 
 data class UserGitHub(
     @SerializedName("login")
@@ -35,4 +36,4 @@ data class UserGitHub(
     val profileUrlUser: String,
     @SerializedName("type")
     val typePower: String
-)
+) : Serializable
