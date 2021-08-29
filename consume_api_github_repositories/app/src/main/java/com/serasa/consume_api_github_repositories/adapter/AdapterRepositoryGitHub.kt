@@ -1,6 +1,5 @@
 package com.serasa.consume_api_github_repositories.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,9 @@ import com.bumptech.glide.Glide
 import com.serasa.consume_api_github_repositories.R
 import com.serasa.consume_api_github_repositories.databinding.ItemRepositoriesBinding
 import com.serasa.consume_api_github_repositories.model.ItemsGitHub
+import com.serasa.consume_api_github_repositories.utils.ClickItemRepository
 
-class AdapterRepositoryGitHub(val onClick: (ItemsGitHub) -> Unit) : RecyclerView.Adapter<ItemRepositoriesViewHolder>() {
+class AdapterRepositoryGitHub(val onClickRepository: ClickItemRepository) : RecyclerView.Adapter<ItemRepositoriesViewHolder>() {
 
     private val listOfRepositories = mutableListOf<ItemsGitHub>()
 
@@ -26,10 +26,10 @@ class AdapterRepositoryGitHub(val onClick: (ItemsGitHub) -> Unit) : RecyclerView
         listOfRepositories[position].apply {
             holder.bind(this)
             holder.itemView.findViewById<ImageView>(R.id.imageViewAvatarRepositorie).setOnClickListener {
-                println("Deu certooooooo")
+                onClickRepository.onClickUserDetail(this)
             }
             holder.itemView.setOnClickListener {
-                onClick(this)
+                onClickRepository.onClickRepository(this)
             }
         }
     }

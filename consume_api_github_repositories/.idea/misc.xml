@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.16018518518518518" />
         <entry key="app/src/main/res/drawable/ic_star.xml" value="0.16018518518518518" />
         <entry key="app/src/main/res/layout-v28/search_repositories_fragment.xml" value="0.2658514492753623" />
+        <entry key="app/src/main/res/layout/bottom_sheet_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fork_star.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/layout/item_pull_request.xml" value="0.2658514492753623" />
         <entry key="app/src/main/res/layout/item_repositories.xml" value="0.24003623188405798" />

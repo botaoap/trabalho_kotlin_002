@@ -8,4 +8,7 @@
     <string name="error_to_load_repositories">Error to load Repositories</string>
     <string name="create_date">Create Date</string>
     <string name="this_repository_hasnt_pull_requests">This repository hasn\'t pull requests</string>
+    <string name="bio">Bio</string>
+    <string name="name">Name</string>
+    <string name="location">Location</string>
 </resources>

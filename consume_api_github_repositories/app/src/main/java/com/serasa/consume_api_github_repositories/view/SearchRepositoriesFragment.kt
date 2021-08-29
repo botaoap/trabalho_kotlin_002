@@ -13,11 +13,12 @@ import com.serasa.consume_api_github_repositories.R
 import com.serasa.consume_api_github_repositories.adapter.AdapterRepositoryGitHub
 import com.serasa.consume_api_github_repositories.databinding.SearchRepositoriesFragmentBinding
 import com.serasa.consume_api_github_repositories.model.ItemsGitHub
+import com.serasa.consume_api_github_repositories.utils.ClickItemRepository
 import com.serasa.consume_api_github_repositories.utils.replaceView
 import com.serasa.consume_api_github_repositories.view_model.PullRequestViewModel
 import com.serasa.consume_api_github_repositories.view_model.SearchRepositoriesViewModel
 
-class SearchRepositoriesFragment : Fragment(R.layout.search_repositories_fragment) {
+class SearchRepositoriesFragment : Fragment(R.layout.search_repositories_fragment), ClickItemRepository {
 
     companion object {
         fun newInstance() = SearchRepositoriesFragment()
@@ -50,17 +51,7 @@ class SearchRepositoriesFragment : Fragment(R.layout.search_repositories_fragmen
         binding = SearchRepositoriesFragmentBinding.bind(view)
         viewModel = ViewModelProvider(this).get(SearchRepositoriesViewModel::class.java)
         viewModelPullRquest = ViewModelProvider(this).get(PullRequestViewModel::class.java)
-        adapter = AdapterRepositoryGitHub {
-
-            viewModelPullRquest.getPullRequest(it.owner.userName, it.title)
-            requireActivity().replaceView(
-                PullRequestFragment
-                    .newInstance(
-                        it.owner.userName,
-                        it.title
-                    )
-            )
-        }
+        adapter = AdapterRepositoryGitHub(this)
         recyclerView = binding.recyclerViewRepositories
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
@@ -76,5 +67,20 @@ class SearchRepositoriesFragment : Fragment(R.layout.search_repositories_fragmen
 
     }
 
+    override fun onClickRepository(repo: ItemsGitHub) {
+        viewModelPullRquest.getPullRequest(repo.owner.userName, repo.title)
+        requireActivity().replaceView(
+            PullRequestFragment
+                .newInstance(
+                    repo.owner.userName,
+                    repo.title
+                )
+        )
+    }
 
+    override fun onClickUserDetail(repo: ItemsGitHub) {
+        BottomSheetFragment.newInstance(repo.owner.userName).let {
+            it.show(parentFragmentManager, "bottom_sheet_key")
+        }
+    }
 }

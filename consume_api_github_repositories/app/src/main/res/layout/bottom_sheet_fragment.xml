@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.BottomSheetFragment">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageViewAvatarDetail"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="@dimen/margin_20"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewUsernameDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_5"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewAvatarDetail"
+        app:layout_constraintStart_toStartOf="@id/imageViewAvatarDetail"
+        app:layout_constraintTop_toBottomOf="@id/imageViewAvatarDetail"
+        tools:text="@string/username" />
+
+    <TextView
+        android:id="@+id/textViewNameDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_20"
+        android:maxLines="1"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUsernameDetail"
+        app:layout_constraintEnd_toStartOf="@id/textViewLocationDetail"
+        tools:text="@string/name" />
+
+    <TextView
+        android:id="@+id/textViewLocationDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_20"
+        android:maxLines="1"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/textViewNameDetail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUsernameDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/location" />
+
+    <TextView
+        android:id="@+id/textViewDescriptionRespositorie"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_margin="@dimen/margin_20"
+        android:layout_marginTop="20dp"
+        android:maxLines="4"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewNameDetail"
+        tools:text="@string/bio" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

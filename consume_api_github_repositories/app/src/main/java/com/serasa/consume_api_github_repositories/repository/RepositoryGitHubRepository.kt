@@ -1,7 +1,9 @@
 package com.serasa.consume_api_github_repositories.repository
 
+import com.serasa.consume_api_github_repositories.model.ItemsGitHub
 import com.serasa.consume_api_github_repositories.model.PullRequest
 import com.serasa.consume_api_github_repositories.model.RepositoryGitHub
+import com.serasa.consume_api_github_repositories.model.UserDetail
 import com.serasa.consume_api_github_repositories.service.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -49,6 +51,25 @@ class RepositoryGitHubRepository {
                 }
 
                 override fun onFailure(call: Call<List<PullRequest>>, t: Throwable) {
+                    callBack(null, t.localizedMessage)
+                }
+
+            })
+    }
+
+    fun fetchUserDetail(username: String, callBack: (UserDetail?, String?) -> Unit) {
+        retrofit.getUserDetail(username)
+            .enqueue(object : Callback<UserDetail> {
+                override fun onResponse(call: Call<UserDetail>, response: Response<UserDetail>) {
+                    response.body()?.let {
+                        callBack(it, null)
+                    }
+                    if (response.code() != 200) {
+                        callBack(null, "Error not recognized!!")
+                    }
+                }
+
+                override fun onFailure(call: Call<UserDetail>, t: Throwable) {
                     callBack(null, t.localizedMessage)
                 }
 
