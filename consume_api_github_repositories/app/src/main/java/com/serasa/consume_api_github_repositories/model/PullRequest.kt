@@ -1,6 +1,7 @@
 package com.serasa.consume_api_github_repositories.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class PullRequest(
     @SerializedName("html_url")
@@ -13,11 +14,11 @@ data class PullRequest(
     val bodyPR: String,
     @SerializedName("created_at")
     val createDatePR: String
-)
+) : Serializable
 
 data class UserPR(
     @SerializedName("login")
     val usernamePR: String,
     @SerializedName("avatar_url")
     val userImagePR: String
-)
+) : Serializable
