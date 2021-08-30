@@ -27,3 +27,6 @@ Check the requisition before starting the project:
 
 ## Good Links to use
 - Lottie File: [HERE](https://lottiefiles.com)
+- Android Developer: [HERE](https://developer.android.com/kotlin/first)
+- Material Design: [HERE](https://material.io/components/app-bars-bottom)
+- Seek Icon: [HERE](https://seekicon.com)
