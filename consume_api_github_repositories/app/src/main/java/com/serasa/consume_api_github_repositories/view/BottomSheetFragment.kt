@@ -38,6 +38,7 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         binding.textViewDescriptionRespositorie.text = it.bio
         Glide.with(requireView())
             .load(it.avatar)
+            .placeholder(R.drawable.ic_error)
             .into(binding.imageViewAvatarDetail)
     }
 
