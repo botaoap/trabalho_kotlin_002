@@ -41,15 +41,19 @@ class PullRequestFragment : Fragment(R.layout.pull_request_fragment), ClickItemP
 
     private val observerPullRequest = Observer<List<PullRequest>> {
         if (it.isEmpty()) {
-            binding.progressBarPullRequest.visibility = INVISIBLE
+//            binding.progressBarPullRequest.visibility = INVISIBLE
+            binding.SplashScreenProgrammer.visibility = INVISIBLE
             Snackbar.make(requireView(), getString(R.string.this_repository_hasnt_pull_requests), Snackbar.LENGTH_LONG).show()
         } else {
             adapter.refresh(it)
-            binding.progressBarPullRequest.visibility = INVISIBLE
+//            binding.progressBarPullRequest.visibility = INVISIBLE
+            binding.SplashScreenProgrammer.visibility = INVISIBLE
         }
     }
 
     private val observerError = Observer<String> {
+//        binding.progressBarPullRequest.visibility = INVISIBLE
+        binding.SplashScreenProgrammer.visibility = INVISIBLE
         binding.textViewErrorPullRequest.visibility = VISIBLE
     }
 

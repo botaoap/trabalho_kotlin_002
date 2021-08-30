@@ -32,10 +32,12 @@ class SearchRepositoriesFragment : Fragment(R.layout.search_repositories_fragmen
 
     private val observerRepository = Observer<List<ItemsGitHub>> {
         adapter.refresh(it)
-        binding.progressBarRepositories.visibility = INVISIBLE
+//        binding.progressBarRepositories.visibility = INVISIBLE
+        binding.SplashScreenProgrammer.visibility = INVISIBLE
     }
 
     private val observerError = Observer<String> {
+        binding.SplashScreenProgrammer.visibility = INVISIBLE
         binding.textViewErrorRepositorie.visibility = VISIBLE
     }
 
