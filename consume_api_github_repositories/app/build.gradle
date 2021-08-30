@@ -71,6 +71,12 @@ dependencies {
     // TODO: Use to Circular ImageView
     implementation('de.hdodenhof:circleimageview:3.1.0')
 
+    // TODO: Use Gif on project
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+
+    // TODO: Use LottieFile
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 
 
 }

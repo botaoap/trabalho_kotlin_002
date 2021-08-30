@@ -13,8 +13,9 @@ import com.serasa.consume_api_github_repositories.databinding.ItemPullRequestBin
 import com.serasa.consume_api_github_repositories.databinding.PullRequestFragmentBinding
 import com.serasa.consume_api_github_repositories.model.PullRequest
 import com.serasa.consume_api_github_repositories.model.RepositoryGitHub
+import com.serasa.consume_api_github_repositories.utils.ClickItemPulRequest
 
-class AdapterPullRequestGitHub(val onClick: (PullRequest) -> Unit): RecyclerView.Adapter<ItemPullRequestViewHolder>() {
+class AdapterPullRequestGitHub(val onClick: ClickItemPulRequest): RecyclerView.Adapter<ItemPullRequestViewHolder>() {
 
     private val listOfPullRequest = mutableListOf<PullRequest>()
 
@@ -28,8 +29,11 @@ class AdapterPullRequestGitHub(val onClick: (PullRequest) -> Unit): RecyclerView
     override fun onBindViewHolder(holder: ItemPullRequestViewHolder, position: Int) {
         listOfPullRequest[position].apply {
             holder.bind(this)
+            holder.itemView.findViewById<ImageView>(R.id.imageViewAvatarPullRequest).setOnClickListener {
+                onClick.onClickPulRequestDetail(this)
+            }
             holder.itemView.setOnClickListener {
-                onClick(this)
+                onClick.onClickHTML(this)
             }
         }
     }
@@ -55,6 +59,7 @@ class ItemPullRequestViewHolder(itemView: View): RecyclerView.ViewHolder(itemVie
         binding.textViewTitlePullRequest.setTextColor(getColor(itemView.context, R.color.blue))
         binding.textViewBodyPullRequest.text = pullRequest.bodyPR
         binding.textViewCreateDatePullRequest.text = pullRequest.createDatePR
+            .split("T")[0]
         binding.imageViewAvatarPullRequest.apply {
             Glide.with(itemView)
                 .load(pullRequest.userPR.userImagePR)

@@ -16,10 +16,11 @@ import com.serasa.consume_api_github_repositories.R
 import com.serasa.consume_api_github_repositories.adapter.AdapterPullRequestGitHub
 import com.serasa.consume_api_github_repositories.databinding.PullRequestFragmentBinding
 import com.serasa.consume_api_github_repositories.model.PullRequest
+import com.serasa.consume_api_github_repositories.utils.ClickItemPulRequest
 import com.serasa.consume_api_github_repositories.utils.replaceView
 import com.serasa.consume_api_github_repositories.view_model.PullRequestViewModel
 
-class PullRequestFragment : Fragment(R.layout.pull_request_fragment) {
+class PullRequestFragment : Fragment(R.layout.pull_request_fragment), ClickItemPulRequest {
 
     companion object {
         fun newInstance(userName: String, repo: String): PullRequestFragment {
@@ -40,15 +41,19 @@ class PullRequestFragment : Fragment(R.layout.pull_request_fragment) {
 
     private val observerPullRequest = Observer<List<PullRequest>> {
         if (it.isEmpty()) {
-            binding.progressBarPullRequest.visibility = INVISIBLE
+//            binding.progressBarPullRequest.visibility = INVISIBLE
+            binding.SplashScreenProgrammer.visibility = INVISIBLE
             Snackbar.make(requireView(), getString(R.string.this_repository_hasnt_pull_requests), Snackbar.LENGTH_LONG).show()
         } else {
             adapter.refresh(it)
-            binding.progressBarPullRequest.visibility = INVISIBLE
+//            binding.progressBarPullRequest.visibility = INVISIBLE
+            binding.SplashScreenProgrammer.visibility = INVISIBLE
         }
     }
 
     private val observerError = Observer<String> {
+//        binding.progressBarPullRequest.visibility = INVISIBLE
+        binding.SplashScreenProgrammer.visibility = INVISIBLE
         binding.textViewErrorPullRequest.visibility = VISIBLE
     }
 
@@ -63,11 +68,7 @@ class PullRequestFragment : Fragment(R.layout.pull_request_fragment) {
     fun loadComponents(view: View) {
         binding = PullRequestFragmentBinding.bind(view)
         viewModel = ViewModelProvider(this).get(PullRequestViewModel::class.java)
-        adapter = AdapterPullRequestGitHub {
-            Intent(Intent.ACTION_VIEW, Uri.parse(it.pagePR)).apply {
-                startActivity(this)
-            }
-        }
+        adapter = AdapterPullRequestGitHub(this)
         recyclerView = binding.recyclerViewPullRequest
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
@@ -89,6 +90,18 @@ class PullRequestFragment : Fragment(R.layout.pull_request_fragment) {
     fun backToRepositories() {
         binding.imageViewBackArrow.setOnClickListener {
             requireActivity().replaceView(SearchRepositoriesFragment.newInstance())
+        }
+    }
+
+    override fun onClickHTML(pageUrl: PullRequest) {
+        Intent(Intent.ACTION_VIEW, Uri.parse(pageUrl.pagePR)).apply {
+            startActivity(this)
+        }
+    }
+
+    override fun onClickPulRequestDetail(user: PullRequest) {
+        BottomSheetFragment.newInstance(user.userPR.usernamePR).let {
+            it.show(parentFragmentManager, "bottom_sheet_key")
         }
     }
 
